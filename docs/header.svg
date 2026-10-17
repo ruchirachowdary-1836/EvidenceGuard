@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320" role="img" aria-labelledby="t d">
+  <title id="t">EvidenceGuard</title>
+  <desc id="d">Animated banner: explanation-aware, budgeted fraud alert ranking</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1020"/><stop offset="1" stop-color="#070a14"/></linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8b5cf6"/><stop offset=".55" stop-color="#22d3ee"/><stop offset="1" stop-color="#8b5cf6"/>
+      <animate attributeName="x1" values="0;-1;0" dur="9s" repeatCount="indefinite"/><animate attributeName="x2" values="1;0;1" dur="9s" repeatCount="indefinite"/></linearGradient>
+    <linearGradient id="wave1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22d3ee" stop-opacity=".35"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/></linearGradient>
+    <linearGradient id="wave2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".4"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#1f2a47" stroke-width="1" opacity=".55"/></pattern>
+    <radialGradient id="fade" cx=".5" cy=".4" r=".75"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/></radialGradient>
+    <mask id="m"><rect width="1200" height="320" fill="url(#fade)"/></mask>
+    <filter id="blur"><feGaussianBlur stdDeviation="46"/></filter>
+    <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <clipPath id="clip"><rect width="1200" height="320" rx="22"/></clipPath>
+    <style>
+      .tx{font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif}
+      .draw{stroke-dasharray:140;stroke-dashoffset:140;animation:draw 2.4s .3s ease-out forwards,pulse 4s 2.8s ease-in-out infinite}
+      .draw2{stroke-dasharray:40;stroke-dashoffset:40;animation:draw 1s 1.9s ease-out forwards}
+      @keyframes draw{to{stroke-dashoffset:0}}
+      @keyframes pulse{50%{opacity:.55}}
+      .rise{opacity:0;animation:rise 1s ease-out forwards}
+      @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+      .chip{opacity:0;animation:rise .8s ease-out forwards}
+      .scan{animation:scan 5s linear infinite}
+      @keyframes scan{from{transform:translateX(-300px)}to{transform:translateX(1500px)}}
+      .bar{transform-box:fill-box;transform-origin:bottom;animation:bar 2.8s ease-in-out infinite}
+      @keyframes bar{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+      .dot{animation:blink 1.4s infinite}
+      @keyframes blink{50%{opacity:.2}}
+    </style>
+  </defs>
+  <g clip-path="url(#clip)">
+    <rect width="1200" height="320" fill="url(#bg)"/>
+    <g filter="url(#blur)" opacity=".55">
+      <circle cx="180" cy="60" r="130" fill="#8b5cf6"><animate attributeName="cx" values="180;420;180" dur="14s" repeatCount="indefinite"/><animate attributeName="cy" values="60;150;60" dur="11s" repeatCount="indefinite"/></circle>
+      <circle cx="1020" cy="260" r="140" fill="#22d3ee"><animate attributeName="cx" values="1020;760;1020" dur="16s" repeatCount="indefinite"/><animate attributeName="cy" values="260;140;260" dur="12s" repeatCount="indefinite"/></circle>
+      <circle cx="640" cy="40" r="80" fill="#f43f5e" opacity=".5"><animate attributeName="cx" values="640;880;640" dur="19s" repeatCount="indefinite"/></circle>
+    </g>
+    <rect width="1200" height="320" fill="url(#grid)" mask="url(#m)"/>
+    <g class="scan"><rect x="0" y="0" width="120" height="320" fill="#22d3ee" opacity=".07"/><rect x="118" y="0" width="2" height="320" fill="#22d3ee" opacity=".5"/></g>
+
+    <!-- shield -->
+    <g transform="translate(88 78)" filter="url(#glow)">
+      <path class="draw" d="M52 6 98 22v34c0 30-20 52-46 62C26 108 6 86 6 56V22z" fill="none" stroke="url(#brand)" stroke-width="5" stroke-linejoin="round"/>
+      <path class="draw2" d="M30 60l16 16 30-34" fill="none" stroke="#22d3ee" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <!-- title -->
+    <g class="tx">
+      <text x="236" y="146" font-size="76" font-weight="800" fill="url(#brand)" class="rise" style="animation-delay:.5s" letter-spacing="-2">EvidenceGuard</text>
+      <text x="240" y="188" font-size="23" fill="#c7d0f5" class="rise" style="animation-delay:.9s">Explanation-aware, budgeted fraud alert ranking</text>
+      <text x="240" y="216" font-size="15" fill="#8793b8" class="rise" style="animation-delay:1.2s">XGBoost + SHAP stability  |  redundancy-aware review queue  |  live analyst console</text>
+      <g font-size="13" font-weight="600">
+        <g class="chip" style="animation-delay:1.5s"><rect x="240" y="238" width="104" height="28" rx="14" fill="#8b5cf622" stroke="#8b5cf6"/><text x="292" y="257" fill="#c4b5fd" text-anchor="middle">XGBoost</text></g>
+        <g class="chip" style="animation-delay:1.65s"><rect x="354" y="238" width="78" height="28" rx="14" fill="#22d3ee22" stroke="#22d3ee"/><text x="393" y="257" fill="#67e8f9" text-anchor="middle">SHAP</text></g>
+        <g class="chip" style="animation-delay:1.8s"><rect x="442" y="238" width="104" height="28" rx="14" fill="#34d39922" stroke="#34d399"/><text x="494" y="257" fill="#6ee7b7" text-anchor="middle">FastAPI</text></g>
+        <g class="chip" style="animation-delay:1.95s"><rect x="556" y="238" width="86" height="28" rx="14" fill="#38bdf822" stroke="#38bdf8"/><text x="599" y="257" fill="#7dd3fc" text-anchor="middle">React</text></g>
+        <g class="chip" style="animation-delay:2.1s"><rect x="652" y="238" width="124" height="28" rx="14" fill="#fbbf2422" stroke="#fbbf24"/><text x="714" y="257" fill="#fcd34d" text-anchor="middle">PostgreSQL</text></g>
+      </g>
+    </g>
+
+    <!-- live equaliser: stability bars -->
+    <g transform="translate(900 92)">
+      <text class="tx" x="0" y="-14" font-size="12" fill="#8793b8" letter-spacing="2">LIVE STABILITY</text>
+      <circle class="dot" cx="132" cy="-18" r="4" fill="#22d3ee"/>
+      <g fill="#22d3ee">
+        <rect class="bar" x="0" y="0" width="14" height="110" rx="4" style="animation-delay:0s"/><rect class="bar" x="22" y="0" width="14" height="110" rx="4" style="animation-delay:.25s" fill="#8b5cf6"/>
+        <rect class="bar" x="44" y="0" width="14" height="110" rx="4" style="animation-delay:.5s"/><rect class="bar" x="66" y="0" width="14" height="110" rx="4" style="animation-delay:.75s" fill="#8b5cf6"/>
+        <rect class="bar" x="88" y="0" width="14" height="110" rx="4" style="animation-delay:1s"/><rect class="bar" x="110" y="0" width="14" height="110" rx="4" style="animation-delay:1.25s" fill="#8b5cf6"/>
+        <rect class="bar" x="132" y="0" width="14" height="110" rx="4" style="animation-delay:1.5s"/><rect class="bar" x="154" y="0" width="14" height="110" rx="4" style="animation-delay:1.75s" fill="#8b5cf6"/>
+      </g>
+    </g>
+
+    <!-- waves -->
+    <path fill="url(#wave2)" d="M0 270 C200 230 400 310 600 270 S1000 230 1200 275 V320 H0Z"><animate attributeName="d" dur="9s" repeatCount="indefinite" values="M0 270 C200 230 400 310 600 270 S1000 230 1200 275 V320 H0Z;M0 280 C200 310 400 230 600 275 S1000 310 1200 265 V320 H0Z;M0 270 C200 230 400 310 600 270 S1000 230 1200 275 V320 H0Z"/></path>
+    <path fill="url(#wave1)" d="M0 290 C250 260 450 320 700 285 S1050 270 1200 295 V320 H0Z"><animate attributeName="d" dur="7s" repeatCount="indefinite" values="M0 290 C250 260 450 320 700 285 S1050 270 1200 295 V320 H0Z;M0 296 C250 322 450 262 700 292 S1050 322 1200 288 V320 H0Z;M0 290 C250 260 450 320 700 285 S1050 270 1200 295 V320 H0Z"/></path>
+  </g>
+  <rect x=".5" y=".5" width="1199" height="319" rx="22" fill="none" stroke="#1f2a47"/>
+</svg>
