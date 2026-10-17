@@ -1,0 +1,8 @@
+# Full protocol: 3 chronological folds x 5 seeds for stochastic parts (slower).
+name: full
+seeds: [7, 11, 13, 17, 19]
+include: default.yaml
+overrides:
+  evaluation:
+    bootstrap_n: 2000
+    deletion_n: 500

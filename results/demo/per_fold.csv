@@ -1,0 +1,4 @@
+fold,seed,main_model,xgb_pr_auc,logreg_pr_auc,recall_p_only@5%,recall_full@5%
+1,7,xgb_weighted,0.9593,0.9260,0.4634,0.4634
+2,7,xgb_weighted,0.9645,0.9586,0.6250,0.6250
+3,7,xgb_weighted,0.9162,0.8801,0.7660,0.7660

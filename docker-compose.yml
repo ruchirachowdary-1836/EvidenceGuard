@@ -1,0 +1,30 @@
+# docker compose up --build   ->  dashboard on http://localhost:8080
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: evidenceguard
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-evidenceguard}
+      POSTGRES_DB: evidenceguard
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/01-readonly.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U evidenceguard"]
+      interval: 5s
+      retries: 20
+  api:
+    build: { context: ., dockerfile: Dockerfile.api }
+    environment:
+      DATABASE_URL: postgresql+psycopg://evidenceguard:${POSTGRES_PASSWORD:-evidenceguard}@db:5432/evidenceguard
+      DATABASE_URL_READONLY: postgresql+psycopg://eg_readonly:eg_readonly@db:5432/evidenceguard
+      WEB_ORIGIN: http://localhost:8080
+    depends_on:
+      db: { condition: service_healthy }
+    ports: ["8000:8000"]
+  web:
+    build: { context: ., dockerfile: Dockerfile.web }
+    depends_on: [api]
+    ports: ["8080:80"]
+volumes:
+  pgdata:

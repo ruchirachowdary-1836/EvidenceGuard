@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #070a14;
+  --color-panel: #0e1424;
+  --color-panel2: #131b30;
+  --color-line: #1f2a47;
+  --color-soft: #8793b8;
+  --color-text: #e6ebff;
+  --color-cyan: #22d3ee;
+  --color-violet: #8b5cf6;
+  --color-lo: #34d399;
+  --color-mid: #fbbf24;
+  --color-hi: #f43f5e;
+  --font-sans: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Cascadia Mono", ui-monospace, monospace;
+}
+
+:root { color-scheme: dark; --ease: cubic-bezier(.22, 1, .36, 1); }
+html, body, #root { height: 100%; }
+body {
+  margin: 0; background: var(--color-ink); color: var(--color-text); font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+::selection { background: #8b5cf655; }
+:focus-visible { outline: 2px solid var(--color-cyan); outline-offset: 2px; border-radius: 6px; }
+* { scrollbar-width: thin; scrollbar-color: #26335a transparent; }
+
+/* ambient background: drifting aurora + faint grid */
+.aurora { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.aurora i { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .28; animation: drift 26s ease-in-out infinite alternate; }
+.aurora i:nth-child(1) { width: 520px; height: 520px; background: #8b5cf6; top: -160px; left: -120px; }
+.aurora i:nth-child(2) { width: 460px; height: 460px; background: #22d3ee; bottom: -180px; right: -120px; animation-delay: -9s; opacity: .2; }
+.aurora i:nth-child(3) { width: 300px; height: 300px; background: #f43f5e; top: 40%; left: 55%; animation-delay: -16s; opacity: .08; }
+.aurora::after {
+  content: ""; position: absolute; inset: 0; opacity: .5;
+  background-image: linear-gradient(#1f2a4722 1px, transparent 1px), linear-gradient(90deg, #1f2a4722 1px, transparent 1px);
+  background-size: 44px 44px; mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
+}
+@keyframes drift { to { transform: translate(110px, 70px) scale(1.2); } }
+
+.glass { background: linear-gradient(180deg, #121a30cc, #0d1322cc); border: 1px solid var(--color-line); border-radius: 16px;
+  backdrop-filter: blur(14px); box-shadow: 0 18px 50px -28px #000; }
+.glass.hover:hover { border-color: #31416f; transform: translateY(-2px); transition: all .3s var(--ease); }
+
+.page-in { animation: pageIn .5s var(--ease) both; }
+@keyframes pageIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.row-in { animation: rowIn .55s var(--ease) both; }
+@keyframes rowIn { from { opacity: 0; transform: translateX(-16px); } to { opacity: 1; transform: none; } }
+.slide-in { animation: slideIn .6s var(--ease) both; }
+@keyframes slideIn { from { opacity: 0; transform: translateX(46px) scale(.94); } to { opacity: 1; transform: none; } }
+.fill { transform-origin: left; animation: fill .9s var(--ease) both; }
+@keyframes fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.pop { animation: pop .5s var(--ease) both; }
+@keyframes pop { from { opacity: 0; transform: scale(.3); } to { opacity: 1; transform: none; } }
+.pulse-dot { animation: pulse 1.8s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 #22d3ee88; } 70% { box-shadow: 0 0 0 10px #22d3ee00; } 100% { box-shadow: 0 0 0 0 #22d3ee00; } }
+.shimmer { background: linear-gradient(90deg, #131b30 25%, #1a2440 50%, #131b30 75%); background-size: 200% 100%; animation: shimmer 1.3s infinite; border-radius: 10px; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+.risk-glow-hi { box-shadow: 0 0 22px -6px #f43f5e99; }
+.sweep { position: relative; overflow: hidden; }
+.sweep::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, #22d3ee22 50%, transparent 70%);
+  transform: translateX(-100%); animation: sweep 4s infinite; }
+@keyframes sweep { 60%, 100% { transform: translateX(100%); } }
+.hatch { background-image: repeating-linear-gradient(45deg, #ffffff22 0 3px, transparent 3px 6px); }
+
+table.dense { border-collapse: separate; border-spacing: 0; width: 100%; font-size: 12.5px; }
+table.dense th { position: sticky; top: 0; background: #0d1322; text-align: left; color: var(--color-soft); font-weight: 500; font-size: 11px;
+  letter-spacing: .06em; text-transform: uppercase; padding: 9px 10px; border-bottom: 1px solid var(--color-line); z-index: 1; }
+table.dense td { padding: 8px 10px; border-bottom: 1px solid #18213a; white-space: nowrap; }
+table.dense tbody tr { transition: background .2s; cursor: pointer; }
+table.dense tbody tr:hover { background: #17213b; }
+table.dense tbody tr.sel { background: #1b2748; box-shadow: inset 3px 0 0 var(--color-cyan); }
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+input[type=range] { accent-color: var(--color-violet); width: 100%; }
+.chip { display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px; border-radius: 999px; font-size: 11px; border: 1px solid var(--color-line); color: var(--color-soft); background: #0d1322; }
+.btn { border: 1px solid var(--color-line); background: #111a30; color: var(--color-text); padding: 7px 12px; border-radius: 10px; font-size: 12.5px; cursor: pointer;
+  transition: transform .2s var(--ease), background .2s, border-color .2s; }
+.btn:hover { background: #18233f; border-color: #33457a; transform: translateY(-1px); }
+.btn:active { transform: scale(.97); }
+.btn.primary { background: linear-gradient(135deg, #8b5cf6, #22d3ee); border: 0; color: #050816; font-weight: 600; }
+.btn:disabled { opacity: .5; pointer-events: none; }
+.input { background: #0a1020; border: 1px solid var(--color-line); border-radius: 10px; padding: 7px 10px; color: var(--color-text); font-size: 13px; outline: none; }
+.input:focus { border-color: var(--color-violet); box-shadow: 0 0 0 3px #8b5cf633; }
+.toast { animation: slideIn .5s var(--ease) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+}
+
+.grid > * { min-width: 0; }
+.glass { min-width: 0; }

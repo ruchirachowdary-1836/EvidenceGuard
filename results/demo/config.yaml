@@ -1,0 +1,74 @@
+data:
+  max_rows: null
+  raw_dir: data/raw
+  source: synthetic
+  synthetic:
+    n_days: 36
+    n_entities: 450
+    n_rings: 20
+evaluation:
+  bootstrap_n: 300
+  budgets:
+  - 0.01
+  - 0.05
+  - 0.1
+  deletion_n: 150
+features:
+  cold_start_n: 5
+  history_cap: 50
+  windows_s:
+  - 3600
+  - 86400
+  - 604800
+  - 2592000
+models:
+  calibration: platt
+  logreg_C: 1.0
+  xgb:
+    colsample_bytree: 0.8
+    early_stopping_rounds: 30
+    learning_rate: 0.07
+    max_depth: 5
+    min_child_weight: 2
+    n_estimators: 400
+    subsample: 0.8
+name: demo
+ranking:
+  grid:
+    beta:
+    - 0.0
+    - 0.25
+    - 0.5
+    - 1.0
+    gamma:
+    - 0.0
+    - 0.25
+    - 0.5
+    - 1.0
+    lam:
+    - 0.0
+    - 0.2
+    - 0.4
+    - 0.6
+  objective_budget: 0.05
+  risk_floor: 0.05
+seeds:
+- 7
+splits:
+  folds:
+  - - 0.5
+    - 0.65
+    - 0.8
+  - - 0.6
+    - 0.75
+    - 0.9
+  - - 0.7
+    - 0.85
+    - 1.0
+stability:
+  M: 20
+  amt_tol: 0.02
+  candidate_frac: 0.2
+  delta: 0.05
+  k: 5
+  time_shift_s: 300

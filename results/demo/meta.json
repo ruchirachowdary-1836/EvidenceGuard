@@ -1,0 +1,13 @@
+{
+  "git_commit": "uncommitted",
+  "python": "3.14.6",
+  "started_at": "2026-10-17T03:58:01.333200+00:00",
+  "libs": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "scikit-learn": "1.9.1",
+    "xgboost": "3.4.1",
+    "shap": "0.54.1",
+    "scipy": "1.16.2"
+  }
+}

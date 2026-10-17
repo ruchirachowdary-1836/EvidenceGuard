@@ -1,0 +1,5 @@
+model,pr_auc_mean,pr_auc_std,ci_lo,ci_hi
+logreg,0.9216,0.0322,0.8647,0.9665
+xgb,0.9330,0.0180,0.8777,0.9723
+xgb_weighted,0.9467,0.0217,0.8986,0.9811
+xgb_calibrated,0.9464,0.0226,,

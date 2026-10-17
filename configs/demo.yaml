@@ -1,0 +1,13 @@
+# Small run that builds the shipped demo database (a few thousand transactions).
+name: demo
+seeds: [7]
+include: default.yaml
+overrides:
+  data:
+    synthetic:
+      n_entities: 450
+      n_days: 36
+      n_rings: 20
+  evaluation:
+    bootstrap_n: 300
+    deletion_n: 150
